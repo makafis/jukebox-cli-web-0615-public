@@ -1,5 +1,5 @@
 require_relative 'spec_helper'
-
+require 'pry'
 songs = [
   "Phoenix - 1901",
   "Tokyo Police Club - Wait Up",
@@ -13,7 +13,9 @@ songs = [
 ]
 
 describe "CLI Jukebox" do
-
+  before do
+    allow(self).to receive(:gets).and_return("")
+  end
   context "with commands" do
     it "responds to 'help'" do
       expect { help }.to output(/^(?=.*help)(?=.*list)(?=.*play)(?=.*exit).+/m).to_stdout
